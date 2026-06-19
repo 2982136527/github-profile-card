@@ -265,13 +265,15 @@ jobs:
               const desc = esc(trunc(repo.description || 'No description', 22));
               const priv = repo.private ? ' <tspan fill="#FF69B4" font-size="9" opacity="0.6">Private</tspan>' : '';
               const dateStr = fmtDate(repo.pushed_at);
-              const langDot = repo.language ? `<circle cx="${x}" cy="${y + 38}" r="3" fill="${colors_P[i % colors_P.length]}" opacity="0.6"/>` : '';
-              const langText = repo.language ? `<text x="${x + 8}" y="${y + 42}" font-family="sans-serif" font-size="9" fill="${colors_P[i % colors_P.length]}" opacity="0.5">${esc(repo.language)}</text>` : '';
-              projRows += `<text x="${x}" y="${y + 14}" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">${name}${priv}</text>
-            <text x="${x + COL_W - 10}" y="${y + 14}" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">${dateStr}</text>
-            <text x="${x}" y="${y + 30}" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">${desc}</text>
+              const langDot = repo.language ? `<circle cx="4" cy="40" r="3" fill="${colors_P[i % colors_P.length]}" opacity="0.6"/>` : '';
+              const langText = repo.language ? `<text x="12" y="44" font-family="sans-serif" font-size="9" fill="${colors_P[i % colors_P.length]}" opacity="0.5">${esc(repo.language)}</text>` : '';
+              projRows += `<rect x="${x - 8}" y="${y - 4}" width="${COL_W}" height="${ROW_H - 6}" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
+            <g transform="translate(${x - 4},${y - 2})" clip-path="url(#cardTextClip)">
+            <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">${name}${priv}</text>
+            <text x="${COL_W - 14}" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">${dateStr}</text>
+            <text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">${desc}</text>
             ${langDot}${langText}
-            <rect x="${x - 8}" y="${y - 4}" width="${COL_W}" height="${ROW_H - 6}" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>`;
+            </g>`;
             });
             const projSection = `<text x="${PW/2}" y="32" text-anchor="middle" font-family="'Courier New', monospace" font-size="12" fill="#FF69B4" opacity="0.5" letter-spacing="8">PROJECTS<animate attributeName="opacity" values="0.5;0.8;0.5" dur="4s" repeatCount="indefinite"/></text>
             <text x="${PW - 30}" y="32" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#D4A5FF" opacity="0.3">${nonFork.length} repos</text>
@@ -385,6 +387,7 @@ jobs:
             <linearGradient id="p_sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00ff88"/><stop offset="50%" stop-color="#FF69B4"/><stop offset="100%" stop-color="#00D4FF"/></linearGradient>
             <radialGradient id="p_orb1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FF69B4" stop-opacity="0.08"/><stop offset="100%" stop-color="transparent"/></radialGradient>
             <clipPath id="heroClip"><rect x="0" y="0" width="900" height="${heroH}"/></clipPath>
+            <clipPath id="cardTextClip"><rect x="0" y="0" width="${COL_W - 8}" height="${ROW_H}"/></clipPath>
             </defs>
             <rect width="${PW}" height="${totalH}" fill="#0a0a1a"/>
             ${gridLines}
