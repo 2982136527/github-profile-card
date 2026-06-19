@@ -391,9 +391,11 @@ jobs:
             <!-- Separator -->
             <line x1="30" y1="${heroH + SEP/2}" x2="${PW-30}" y2="${heroH + SEP/2}" stroke="#FF69B4" stroke-width="0.5" opacity="0.15"/>
             <!-- Arsenal (dynamic, full width) -->
+            <g transform="translate(0,${heroH + SEP})">
             ${arsenalSection}
+            </g>
             <!-- Separator -->
-            <line x1="30" y1="${arsenalH + SEP/2}" x2="${PW-30}" y2="${arsenalH + SEP/2}" stroke="#FF69B4" stroke-width="0.5" opacity="0.15"/>
+            <line x1="30" y1="${heroH + SEP + arsenalH + SEP/2}" x2="${PW-30}" y2="${heroH + SEP + arsenalH + SEP/2}" stroke="#FF69B4" stroke-width="0.5" opacity="0.15"/>
             <!-- Profile Card -->
             <g transform="translate(0,${heroH + SEP + arsenalH + SEP})">
             <circle cx="200" cy="${dOff + 160}" r="140" fill="url(#p_orb1)"/>
