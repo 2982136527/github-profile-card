@@ -1,47 +1,49 @@
-# GitHub Profile Card
+# GitHub 个人主页卡片
 
-A dynamic, animated GitHub profile card that auto-updates with your stats, languages, and contribution history.
+一个动态、自动更新的 GitHub 个人主页 SVG 卡片，展示你的项目、编程语言、贡献统计等信息。
+
+**[English](README_EN.md)**
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/2982136527/2982136527/main/profile-card.svg" width="960" alt="Profile Card" />
 </div>
 
-## Features
+## 功能特性
 
-- **Tech Arsenal** — Auto-detects your top 12 languages and displays them as orbiting icons around a glowing sun
-- **Project Grid** — Lists all your repositories with descriptions, languages, and last push dates
-- **Activity Dashboard** — Shows contribution count, repo count, followers, and a streak indicator
-- **Contribution Snake** — Animated snake path through your contribution grid
-- **Auto-updates** — Runs every 6 hours via GitHub Actions
+- **编程语言星轨** — 自动检测你使用最多的 12 种编程语言，以行星轨道方式环绕太阳展示
+- **项目列表** — 展示所有仓库，包含描述、语言和最后更新日期
+- **活动面板** — 显示贡献数、仓库数、关注者和连续贡献进度
+- **贡献蛇形图** — 动画蛇形路径展示你的贡献日历
+- **自动更新** — 每 6 小时通过 GitHub Actions 自动刷新
 
-## Quick Start
+## 快速开始
 
-### 1. Create your profile repo
+### 1. 创建同名仓库
 
-Create a new repository with the **same name as your GitHub username** (e.g., if your username is `octocat`, create `octocat/octocat`).
+创建一个与你的 GitHub 用户名**同名**的仓库（例如用户名是 `octocat`，就创建 `octocat/octocat`）。
 
-### 2. Copy the files
+### 2. 复制文件
 
-Copy these files into your new repo:
+将以下文件复制到你的新仓库：
 - `.github/workflows/update-profile.yml`
-- `hero-banner.svg` (the header image)
+- `hero-banner.svg`（头图文件）
 
-### 3. (Optional) Add a Personal Access Token
+### 3. （可选）添加 Personal Access Token
 
-If you want **private repos** included in the stats:
+如果想统计**私有仓库**：
 
-1. Go to [GitHub Settings > Developer settings > Personal access tokens > Fine-grained tokens](https://github.com/settings/tokens?type=beta)
-2. Create a token with `repo` scope (or `metadata:read` for just language data)
-3. Go to your profile repo's **Settings > Secrets and variables > Actions**
-4. Add a secret named `PAT` with your token value
+1. 前往 [GitHub Settings > Developer settings > Personal access tokens > Fine-grained tokens](https://github.com/settings/tokens?type=beta)
+2. 创建一个有 `repo` 权限的 token
+3. 前往仓库的 **Settings > Secrets and variables > Actions**
+4. 添加一个名为 `PAT` 的 secret，值为你的 token
 
-### 4. Trigger the workflow
+### 4. 触发 Workflow
 
-Go to your repo's **Actions** tab, select "update profile", and click **Run workflow**.
+前往仓库的 **Actions** 页面，选择 "update profile"，点击 **Run workflow**。
 
-### 5. Update your README
+### 5. 更新 README
 
-Replace your `README.md` with:
+将你的 `README.md` 替换为：
 
 ```markdown
 <div align="center">
@@ -49,60 +51,60 @@ Replace your `README.md` with:
 </div>
 ```
 
-## Customization
+## 自定义
 
-### Changing the color theme
+### 修改配色主题
 
-The default theme uses a pink/purple/cyan palette. To change it, search and replace these colors in the workflow:
+默认使用粉色/紫色/青色配色。在 workflow 中搜索替换以下颜色：
 
-| Color | Usage |
-|-------|-------|
-| `#FF69B4` | Primary pink |
-| `#D4A5FF` | Secondary purple |
-| `#00D4FF` | Accent cyan |
-| `#00ff88` | Success green |
-| `#0a0a1a` | Background |
+| 颜色 | 用途 |
+|------|------|
+| `#FF69B4` | 主色粉色 |
+| `#D4A5FF` | 副色紫色 |
+| `#00D4FF` | 点缀青色 |
+| `#00ff88` | 成功绿色 |
+| `#0a0a1a` | 背景色 |
 
-### Changing the schedule
+### 修改更新频率
 
-Edit the `cron` line in the workflow to change update frequency:
+编辑 workflow 中的 `cron` 行：
 
 ```yaml
 on:
   schedule:
-    - cron: "23 */6 * * *"  # Every 6 hours at :23
+    - cron: "23 */6 * * *"  # 每 6 小时的第 23 分钟
 ```
 
-### Adding custom language icons
+### 添加自定义语言图标
 
-Edit the `LANG_MAP` object in the workflow to add or change language display config:
+编辑 workflow 中的 `LANG_MAP` 对象：
 
 ```javascript
 'YourLang': { abbr: 'YL', color: '#FF0000', textColor: '#fff' },
 ```
 
-## How It Works
+## 工作原理
 
-1. **GitHub Actions** runs on schedule (every 6 hours) or manual trigger
-2. Fetches your repos, languages, contributions, and follower data via GitHub API
-3. Generates an SVG with:
-   - Dynamic tech arsenal based on your actual top languages
-   - Project grid from your repos
-   - Dashboard with real stats
-   - Contribution snake from your calendar
-4. Commits the updated SVG to your repo
+1. **GitHub Actions** 按计划运行（每 6 小时）或手动触发
+2. 通过 GitHub API 获取你的仓库、语言、贡献和关注者数据
+3. 生成包含以下内容的 SVG：
+   - 基于你实际语言的动态编程语言星轨
+   - 仓库项目列表
+   - 真实统计数据面板
+   - 贡献日历蛇形图
+4. 将更新后的 SVG 提交到仓库
 
-## FAQ
+## 常见问题
 
-**Q: Why don't I see private repos?**
-A: You need to set up a Personal Access Token (PAT) as described above.
+**Q: 为什么看不到私有仓库？**
+A: 需要按上述步骤设置 Personal Access Token (PAT)。
 
-**Q: Can I use this without the arsenal section?**
-A: Yes, just remove the `arsenalSvg` section from the workflow and adjust the height calculations.
+**Q: 可以去掉星轨部分吗？**
+A: 可以，删除 workflow 中的 `arsenalSection` 部分并调整高度计算即可。
 
-**Q: The SVG looks cached / old**
-A: GitHub caches raw SVG files. Add `?v=timestamp` to the image URL in your README, or wait a few minutes.
+**Q: SVG 显示的是旧版本？**
+A: GitHub 会缓存 SVG 文件。在 README 的图片 URL 后添加 `?v=时间戳`，或等待几分钟。
 
-## License
+## 开源协议
 
-MIT — use however you like!
+MIT — 随便用！
