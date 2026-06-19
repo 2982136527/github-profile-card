@@ -18,38 +18,21 @@
 
 ## 快速开始
 
-### 1. 创建同名仓库
+### 方式一：Fork 本仓库（推荐）
 
-创建一个与你的 GitHub 用户名**同名**的仓库（例如用户名是 `octocat`，就创建 `octocat/octocat`）。
+1. 点击右上角 **Fork** 按钮
+2. 前往你 fork 后的仓库的 **Actions** 页面
+3. 点击 "I understand my workflows, go ahead and enable them" 启用 workflow
+4. 点击 **Run workflow** 手动触发一次
+5. 等待运行完成，你的 `profile-card.svg` 就生成好了！
 
-### 2. 复制文件
+> Fork 后会自动使用你的 GitHub 用户名、仓库、语言等数据，无需修改任何代码。
 
-将以下文件复制到你的新仓库：
-- `.github/workflows/update-profile.yml`
-- `hero-banner.svg`（头图文件）
+### 方式二：手动创建
 
-### 3. （可选）添加 Personal Access Token
-
-如果想统计**私有仓库**：
-
-1. 前往 [GitHub Settings > Developer settings > Personal access tokens > Fine-grained tokens](https://github.com/settings/tokens?type=beta)
-2. 创建一个有 `repo` 权限的 token
-3. 前往仓库的 **Settings > Secrets and variables > Actions**
-4. 添加一个名为 `PAT` 的 secret，值为你的 token
-
-### 4. 触发 Workflow
-
-前往仓库的 **Actions** 页面，选择 "update profile"，点击 **Run workflow**。
-
-### 5. 更新 README
-
-将你的 `README.md` 替换为：
-
-```markdown
-<div align="center">
-  <img src="profile-card.svg" width="960" alt="Profile Card" />
-</div>
-```
+1. 创建一个与你的 GitHub 用户名**同名**的仓库
+2. 复制 `.github/workflows/update-profile.yml` 和 `hero-banner.svg` 到新仓库
+3. 前往 Actions 页面运行 workflow
 
 ## 自定义
 

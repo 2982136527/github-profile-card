@@ -102,6 +102,9 @@ jobs:
             heroInner = prefixIds(heroInner, 'h_', heroIds);
             heroInner = heroInner.replace(/<rect[^>]*fill="#0a0a1a"[^>]*\/?>/, '');
             heroInner = heroInner.replace(/<g opacity="0\.04"[^>]*>[\s\S]*?<\/g>/, '');
+            // Replace hardcoded name with dynamic username
+            heroInner = heroInner.replace(/>QIUHU</, '>' + OWNER.toUpperCase() + '<');
+            heroInner = heroInner.replace(/DEVELOPER \| BUILDER \| CREATOR/, 'DEVELOPER | BUILDER | CREATOR');
 
             // ── Fetch data via Octokit ──
             const { data: user } = await github.rest.users.getByUsername({ username: OWNER });
