@@ -3,7 +3,7 @@
 A dynamic, animated GitHub profile card that auto-updates with your stats, languages, and contribution history.
 
 <div align="center">
-  <img src="profile-card.svg" width="960" alt="Profile Card" />
+  <img src="https://raw.githubusercontent.com/2982136527/2982136527/main/profile-card.svg" width="960" alt="Profile Card" />
 </div>
 
 ## Features
