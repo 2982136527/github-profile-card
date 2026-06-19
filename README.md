@@ -18,21 +18,48 @@
 
 ## 快速开始
 
-### 方式一：Fork 本仓库（推荐）
+### 第一步：Fork 本仓库
 
-1. 点击右上角 **Fork** 按钮
-2. 前往你 fork 后的仓库的 **Actions** 页面
-3. 点击 "I understand my workflows, go ahead and enable them" 启用 workflow
-4. 点击 **Run workflow** 手动触发一次
-5. 等待运行完成，你的 `profile-card.svg` 就生成好了！
+点击右上角 **Fork** 按钮，将本仓库 Fork 到你的账号下。
 
 > Fork 后会自动使用你的 GitHub 用户名、仓库、语言等数据，无需修改任何代码。
 
-### 方式二：手动创建
+### 第二步：设置 Personal Access Token（可选）
 
-1. 创建一个与你的 GitHub 用户名**同名**的仓库
-2. 复制 `.github/workflows/update-profile.yml` 和 `hero-banner.svg` 到新仓库
-3. 前往 Actions 页面运行 workflow
+如果你想在卡片中显示**私有仓库**，需要设置 PAT。只显示公开仓库可跳过此步。
+
+1. 前往 [GitHub Settings → Developer settings → Personal access tokens → Fine-grained tokens](https://github.com/settings/tokens?type=beta)
+2. 点击 **Generate new token**
+3. 填写 Token name（随意，如 `profile-card`）
+4. Expiration 选择 **No expiration** 或你需要的有效期
+5. Repository access 选择 **Only select repositories**，选中你要展示的仓库（或选 **All repositories**）
+6. 在 **Permissions → Repository permissions** 中，将 **Metadata** 设为 **Read**
+7. 点击 **Generate token**，复制生成的 token
+
+然后回到你 Fork 的仓库：
+
+1. 进入仓库 **Settings → Secrets and variables → Actions**
+2. 点击 **New repository secret**
+3. Name 填 `PAT`
+4. Secret 填上一步复制的 token
+5. 点击 **Add secret**
+
+### 第三步：启用 Actions 并运行
+
+1. 前往你 Fork 后仓库的 **Actions** 页面
+2. 如果看到 "I understand my workflows, go ahead and enable them"，点击启用
+3. 点击左侧 **update profiles**，再点击 **Run workflow → Run workflow**
+4. 等待约 15 秒运行完成，`profile-card.svg` 就生成好了！
+
+### 第四步：更新你的 README
+
+将你的同名仓库的 `README.md` 替换为：
+
+```markdown
+<div align="center">
+  <img src="profile-card.svg" width="960" alt="Profile Card" />
+</div>
+```
 
 ## 自定义
 
@@ -80,7 +107,7 @@ on:
 ## 常见问题
 
 **Q: 为什么看不到私有仓库？**
-A: 需要按上述步骤设置 Personal Access Token (PAT)。
+A: 需要按上述第二步设置 Personal Access Token (PAT)。
 
 **Q: 可以去掉星轨部分吗？**
 A: 可以，删除 workflow 中的 `arsenalSection` 部分并调整高度计算即可。

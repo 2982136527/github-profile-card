@@ -18,32 +18,42 @@ A dynamic, auto-updating GitHub profile SVG card that showcases your projects, l
 
 ## Quick Start
 
-### 1. Create your profile repo
+### Step 1: Fork this repo
 
-Create a new repository with the **same name as your GitHub username** (e.g., if your username is `octocat`, create `octocat/octocat`).
+Click the **Fork** button in the top right corner.
 
-### 2. Copy the files
+> After forking, the workflow automatically uses your GitHub username, repos, and language data — no code changes needed.
 
-Copy these files into your new repo:
-- `.github/workflows/update-profile.yml`
-- `hero-banner.svg` (the header image)
+### Step 2: Set up a Personal Access Token (optional)
 
-### 3. (Optional) Add a Personal Access Token
+If you want **private repos** shown on the card, you need a PAT. Skip this step if you only want public repos.
 
-If you want **private repos** included in the stats:
+1. Go to [GitHub Settings → Developer settings → Personal access tokens → Fine-grained tokens](https://github.com/settings/tokens?type=beta)
+2. Click **Generate new token**
+3. Fill in a token name (e.g., `profile-card`)
+4. Set Expiration to **No expiration** or your preferred duration
+5. Under Repository access, select **Only select repositories** and pick the repos to show (or **All repositories**)
+6. Under **Permissions → Repository permissions**, set **Metadata** to **Read**
+7. Click **Generate token** and copy it
 
-1. Go to [GitHub Settings > Developer settings > Personal access tokens > Fine-grained tokens](https://github.com/settings/tokens?type=beta)
-2. Create a token with `repo` scope (or `metadata:read` for just language data)
-3. Go to your profile repo's **Settings > Secrets and variables > Actions**
-4. Add a secret named `PAT` with your token value
+Then go back to your forked repo:
 
-### 4. Trigger the workflow
+1. Go to **Settings → Secrets and variables → Actions**
+2. Click **New repository secret**
+3. Name: `PAT`
+4. Secret: paste the token from above
+5. Click **Add secret**
 
-Go to your repo's **Actions** tab, select "update profile", and click **Run workflow**.
+### Step 3: Enable Actions and run
 
-### 5. Update your README
+1. Go to the **Actions** tab of your forked repo
+2. If you see "I understand my workflows, go ahead and enable them", click to enable
+3. Click **update profiles** on the left, then **Run workflow → Run workflow**
+4. Wait about 15 seconds — your `profile-card.svg` is ready!
 
-Replace your `README.md` with:
+### Step 4: Update your README
+
+Replace your same-name repo's `README.md` with:
 
 ```markdown
 <div align="center">
@@ -97,7 +107,7 @@ Edit the `LANG_MAP` object in the workflow to add or change language display con
 ## FAQ
 
 **Q: Why don't I see private repos?**
-A: You need to set up a Personal Access Token (PAT) as described above.
+A: You need to set up a Personal Access Token (PAT) as described in Step 2 above.
 
 **Q: Can I use this without the arsenal section?**
 A: Yes, just remove the `arsenalSection` from the workflow and adjust the height calculations.
