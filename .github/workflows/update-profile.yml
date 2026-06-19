@@ -384,12 +384,18 @@ jobs:
             </defs>
             <rect width="${PW}" height="${totalH}" fill="#0a0a1a"/>
             ${gridLines}
+            <!-- Hero Banner (900px centered in 960px) -->
+            <g transform="translate(${(PW-900)/2},0)">
+            ${heroInner}
+            </g>
+            <!-- Separator -->
+            <line x1="30" y1="${heroH + SEP/2}" x2="${PW-30}" y2="${heroH + SEP/2}" stroke="#FF69B4" stroke-width="0.5" opacity="0.15"/>
             <!-- Arsenal (dynamic, full width) -->
             ${arsenalSection}
             <!-- Separator -->
             <line x1="30" y1="${arsenalH + SEP/2}" x2="${PW-30}" y2="${arsenalH + SEP/2}" stroke="#FF69B4" stroke-width="0.5" opacity="0.15"/>
             <!-- Profile Card -->
-            <g transform="translate(0,${arsenalH + SEP})">
+            <g transform="translate(0,${heroH + SEP + arsenalH + SEP})">
             <circle cx="200" cy="${dOff + 160}" r="140" fill="url(#p_orb1)"/>
             <circle cx="${PW-200}" cy="${dOff + 160}" r="120" fill="url(#p_orb1)"/>
             ${projSection}
