@@ -1,4 +1,4 @@
-name: update profile
+name: update profiles
 on:
   schedule:
     - cron: "23 */6 * * *"
@@ -15,6 +15,26 @@ jobs:
           script: |
             const fs = require('fs');
             const OWNER = context.repo.owner;
+
+            // ── Helper: read file from checked-out repo ──
+            function readLocal(path) {
+              return fs.readFileSync(require('path').join(process.env.GITHUB_WORKSPACE, path), 'utf8');
+            }
+
+            // ── Helper: extract inner SVG content ──
+            function svgInner(svg) {
+              const m = svg.match(/<svg[^>]*>([\s\S]*)<\/svg>/);
+              return m ? m[1].trim() : '';
+            }
+
+            // ── Helper: prefix IDs in SVG content ──
+            function prefixIds(text, prefix, ids) {
+              for (const id of ids.sort((a,b) => b.length - a.length)) {
+                text = text.split(`id="${id}"`).join(`id="${prefix}${id}"`);
+                text = text.split(`url(#${id})`).join(`url(#${prefix}${id})`);
+              }
+              return text;
+            }
 
             // ── Language display config ──
             const LANG_MAP = {
@@ -37,7 +57,6 @@ jobs:
               'HTML':          { abbr: 'H5',  color: '#E34F26', textColor: '#fff' },
               'CSS':           { abbr: 'Css', color: '#1572B6', textColor: '#fff' },
               'Vue':           { abbr: 'Vue', color: '#4FC08D', textColor: '#fff' },
-              'React':         { abbr: 'Re',  color: '#61DAFB', textColor: '#000' },
               'Svelte':        { abbr: 'Sv',  color: '#FF3E00', textColor: '#fff' },
               'Scala':         { abbr: 'Sc',  color: '#DC322F', textColor: '#fff' },
               'R':             { abbr: 'R',   color: '#276DC3', textColor: '#fff' },
@@ -76,11 +95,32 @@ jobs:
                 <text x="0" y="5" text-anchor="middle" font-size="${config.fontSize || 11}" font-weight="bold" fill="${config.textColor}" font-family="sans-serif">${config.abbr}</text>`;
             }
 
-            // ── Fetch data ──
+            // ── Read static hero-banner ──
+            const heroSvg = readLocal('hero-banner.svg');
+            let heroInner = svgInner(heroSvg);
+            const heroIds = ['glow','glow-strong','aurora1','aurora2','text-grad','dot-glow','orb'];
+            heroInner = prefixIds(heroInner, 'h_', heroIds);
+            heroInner = heroInner.replace(/<rect[^>]*fill="#0a0a1a"[^>]*\/?>/, '');
+            heroInner = heroInner.replace(/<g opacity="0\.04"[^>]*>[\s\S]*?<\/g>/, '');
+
+            // ── Fetch data via Octokit ──
             const { data: user } = await github.rest.users.getByUsername({ username: OWNER });
             let repos = [];
             for await (const r of github.paginate.iterator(github.rest.repos.listForUser, { username: OWNER, type: 'all', per_page: 100, sort: 'pushed', direction: 'desc' })) {
               repos.push(...r.data);
+            }
+            const pat = process.env.PAT;
+            if (pat) {
+              try {
+                const resp = await fetch('https://api.github.com/user/repos?type=all&per_page=100&sort=pushed&direction=desc', {
+                  headers: { Authorization: 'token ' + pat, Accept: 'application/vnd.github+json' }
+                });
+                if (resp.ok) {
+                  const priv = await resp.json();
+                  const pubNames = new Set(repos.map(r => r.full_name));
+                  priv.forEach(r => { if (!pubNames.has(r.full_name)) repos.push(r); });
+                }
+              } catch {}
             }
 
             // Language bytes
@@ -132,19 +172,19 @@ jobs:
             const AS = 960, AY = 200, ACX = 480;
             const OUTER_RX = 380, OUTER_RY = 80, OUTER_DUR = 65;
             const INNER_RX = 240, INNER_RY = 50, INNER_DUR = 40;
-            const ORBIT_PATH_O = `M${ACX+OUTER_RX},${AY} A${OUTER_RX},${OUTER_RY} 0 1,1 ${ACX-OUTER_RX},${AY} A${OUTER_RX},${OUTER_RY} 0 1,1 ${ACX+OUTER_RX},${AY}`;
-            const ORBIT_PATH_I = `M${ACX+INNER_RX},${AY} A${INNER_RX},${INNER_RY} 0 1,0 ${ACX-INNER_RX},${AY} A${INNER_RX},${INNER_RY} 0 1,0 ${ACX+INNER_RX},${AY}`;
+            const ORBIT_PATH_O = 'M' + (ACX+OUTER_RX) + ',' + AY + ' A' + OUTER_RX + ',' + OUTER_RY + ' 0 1,1 ' + (ACX-OUTER_RX) + ',' + AY + ' A' + OUTER_RX + ',' + OUTER_RY + ' 0 1,1 ' + (ACX+OUTER_RX) + ',' + AY;
+            const ORBIT_PATH_I = 'M' + (ACX+INNER_RX) + ',' + AY + ' A' + INNER_RX + ',' + INNER_RY + ' 0 1,0 ' + (ACX-INNER_RX) + ',' + AY + ' A' + INNER_RX + ',' + INNER_RY + ' 0 1,0 ' + (ACX+INNER_RX) + ',' + AY;
 
             let outerIcons = '';
             outerLangs.forEach((entry, i) => {
               const [name] = entry;
               const cfg = langConfig(name);
               const begin = -(i * OUTER_DUR / outerLangs.length).toFixed(3);
-              outerIcons += `
-      <g filter="url(#a_glow-s)"><animateMotion dur="${OUTER_DUR}s" repeatCount="indefinite" begin="${begin}s" rotate="auto" path="${ORBIT_PATH_O}"/>
-        ${techIcon(cfg)}
-        <animate attributeName="opacity" values="0.9;1;0.9" dur="${3 + i * 0.3}s" repeatCount="indefinite"/>
-      </g>`;
+              const animDur = (3 + i * 0.3).toFixed(1);
+              outerIcons += '<g filter="url(#a_glow-s)"><animateMotion dur="' + OUTER_DUR + 's" repeatCount="indefinite" begin="' + begin + 's" rotate="auto" path="' + ORBIT_PATH_O + '"/>';
+              outerIcons += techIcon(cfg);
+              outerIcons += '<animate attributeName="opacity" values="0.9;1;0.9" dur="' + animDur + 's" repeatCount="indefinite"/>';
+              outerIcons += '</g>';
             });
 
             let innerIcons = '';
@@ -152,11 +192,11 @@ jobs:
               const [name] = entry;
               const cfg = langConfig(name);
               const begin = -(i * INNER_DUR / Math.max(innerLangs.length, 1)).toFixed(3);
-              innerIcons += `
-      <g filter="url(#a_glow-s)"><animateMotion dur="${INNER_DUR}s" repeatCount="indefinite" begin="${begin}s" rotate="auto" path="${ORBIT_PATH_I}"/>
-        ${techIcon(cfg)}
-        <animate attributeName="opacity" values="0.9;1;0.9" dur="${3.5 + i * 0.4}s" repeatCount="indefinite"/>
-      </g>`;
+              const animDur = (3.5 + i * 0.4).toFixed(1);
+              innerIcons += '<g filter="url(#a_glow-s)"><animateMotion dur="' + INNER_DUR + 's" repeatCount="indefinite" begin="' + begin + 's" rotate="auto" path="' + ORBIT_PATH_I + '"/>';
+              innerIcons += techIcon(cfg);
+              innerIcons += '<animate attributeName="opacity" values="0.9;1;0.9" dur="' + animDur + 's" repeatCount="indefinite"/>';
+              innerIcons += '</g>';
             });
 
             // Sparkle particles
@@ -165,76 +205,37 @@ jobs:
               const c = colors[i % 3];
               const dur = 18 + i * 3;
               const r = 1.5 + (i % 3) * 0.5;
-              const paths = [ORBIT_PATH_O, ORBIT_PATH_I, `M${ACX+OUTER_RX+40},${AY} A${OUTER_RX+40},${OUTER_RY+10} 0 1,1 ${ACX-OUTER_RX-40},${AY} A${OUTER_RX+40},${OUTER_RY+10} 0 1,1 ${ACX+OUTER_RX+40},${AY}`];
+              const sparklePath = 'M' + (ACX+OUTER_RX+40) + ',' + AY + ' A' + (OUTER_RX+40) + ',' + (OUTER_RY+10) + ' 0 1,1 ' + (ACX-OUTER_RX-40) + ',' + AY + ' A' + (OUTER_RX+40) + ',' + (OUTER_RY+10) + ' 0 1,1 ' + (ACX+OUTER_RX+40) + ',' + AY;
+              const paths = [ORBIT_PATH_O, ORBIT_PATH_I, sparklePath];
               const p = paths[i % 3];
-              return `<g><animateMotion dur="${dur}s" repeatCount="indefinite" begin="${-i*3}s" rotate="auto" path="${p}"/>
-        <circle r="${r}" fill="${c}" opacity="0.5"><animate attributeName="opacity" values="0.5;1;0.5" dur="${2 + i*0.3}s" repeatCount="indefinite"/></circle>
-      </g>`;
+              const circleDur = (2 + i*0.3).toFixed(1);
+              let s = '<g><animateMotion dur="' + dur + 's" repeatCount="indefinite" begin="' + (-i*3) + 's" rotate="auto" path="' + p + '"/>';
+              s += '<circle r="' + r + '" fill="' + c + '" opacity="0.5"><animate attributeName="opacity" values="0.5;1;0.5" dur="' + circleDur + 's" repeatCount="indefinite"/></circle>';
+              s += '</g>';
+              return s;
             }).join('');
 
-            const arsenalSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${AS}" height="420" viewBox="0 0 ${AS} 420">
-      <defs>
-        <filter id="a_glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <filter id="a_glow-s"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <filter id="a_glow-core" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <filter id="a_sun-glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="20" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <filter id="a_corona-blur" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="25"/></filter>
-        <filter id="a_corona-blur-wide" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="40"/></filter>
-        <radialGradient id="a_bg-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FF69B4" stop-opacity="0.08"/><stop offset="60%" stop-color="#9B59B6" stop-opacity="0.03"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-        <radialGradient id="a_sun-grad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFF8E1"/><stop offset="30%" stop-color="#FFD54F"/><stop offset="60%" stop-color="#FF9800"/><stop offset="100%" stop-color="#FF69B4" stop-opacity="0"/></radialGradient>
-        <linearGradient id="a_ring-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF69B4"/><stop offset="100%" stop-color="#9B59B6"/></linearGradient>
-      </defs>
-      <rect width="${AS}" height="420" fill="#0a0a1a"/>
-      <rect width="${AS}" height="420" fill="url(#a_bg-glow)"/>
-      <!-- Grid -->
-      <g opacity="0.03" stroke="#FF69B4" stroke-width="0.5">
-        ${Array.from({length:13},(_,i)=>`<line x1="${i*80}" y1="0" x2="${i*80}" y2="420"/>`).join('')}
-        ${Array.from({length:8},(_,i)=>`<line x1="0" y1="${i*60}" x2="${AS}" y2="${i*60}"/>`).join('')}
-      </g>
-      <!-- Elliptical orbits -->
-      <ellipse cx="${ACX}" cy="${AY}" rx="${OUTER_RX}" ry="${OUTER_RY}" fill="none" stroke="#FF69B4" stroke-width="0.5" opacity="0.12"/>
-      <ellipse cx="${ACX}" cy="${AY}" rx="${INNER_RX}" ry="${INNER_RY}" fill="none" stroke="#D4A5FF" stroke-width="0.4" opacity="0.08" stroke-dasharray="4 8"/>
-      <!-- Sun: soft borderless glow layers -->
-      <circle cx="${ACX}" cy="${AY}" r="80" fill="#FF9800" filter="url(#a_corona-blur-wide)" opacity="0">
-        <animate attributeName="r" values="70;95;70" dur="6s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.08;0.18;0.08" dur="6s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="${ACX}" cy="${AY}" r="55" fill="#FFD54F" filter="url(#a_corona-blur)" opacity="0">
-        <animate attributeName="r" values="48;65;48" dur="4s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.15;0.3;0.15" dur="4s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="${ACX}" cy="${AY}" r="35" fill="#FFD54F" filter="url(#a_sun-glow)" opacity="0">
-        <animate attributeName="r" values="30;42;30" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="${ACX}" cy="${AY}" r="30" fill="#FFD54F" opacity="0">
-        <animate attributeName="r" values="25;45;25" dur="5s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.05;0.12;0.05" dur="5s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="${ACX}" cy="${AY}" r="25" fill="#FF9800" opacity="0">
-        <animate attributeName="r" values="20;38;20" dur="7s" begin="-2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.04;0.1;0.04" dur="7s" begin="-2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="${ACX}" cy="${AY}" r="28" fill="#FF69B4" opacity="0">
-        <animate attributeName="r" values="22;42;22" dur="8s" begin="-4s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.03;0.08;0.03" dur="8s" begin="-4s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="${ACX}" cy="${AY}" r="16" fill="url(#a_sun-grad)" filter="url(#a_glow-core)" opacity="0.95">
-        <animate attributeName="r" values="14;18;14" dur="3s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="${ACX}" cy="${AY}" r="8" fill="#FFF8E1" opacity="0.5">
-        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/>
-      </circle>
-      <!-- Tech icons -->
-      ${outerIcons}
-      ${innerIcons}
-      ${sparkles}
-      <!-- Label -->
-      <text x="${ACX}" y="390" text-anchor="middle" font-family="'Courier New', monospace" font-size="10" fill="#FF69B4" opacity="0.4" letter-spacing="6">TECH ARSENAL<animate attributeName="opacity" values="0.4;0.7;0.4" dur="4s" repeatCount="indefinite"/></text>
-    </svg>`;
+            let arsenalSection = '<!-- Grid --><g opacity="0.03" stroke="#FF69B4" stroke-width="0.5">';
+            for (let i = 0; i < 13; i++) arsenalSection += '<line x1="' + (i*80) + '" y1="0" x2="' + (i*80) + '" y2="420"/>';
+            for (let i = 0; i < 8; i++) arsenalSection += '<line x1="0" y1="' + (i*60) + '" x2="' + AS + '" y2="' + (i*60) + '"/>';
+            arsenalSection += '</g>';
+            arsenalSection += '<!-- Elliptical orbits -->';
+            arsenalSection += '<ellipse cx="' + ACX + '" cy="' + AY + '" rx="' + OUTER_RX + '" ry="' + OUTER_RY + '" fill="none" stroke="#FF69B4" stroke-width="0.5" opacity="0.12"/>';
+            arsenalSection += '<ellipse cx="' + ACX + '" cy="' + AY + '" rx="' + INNER_RX + '" ry="' + INNER_RY + '" fill="none" stroke="#D4A5FF" stroke-width="0.4" opacity="0.08" stroke-dasharray="4 8"/>';
+            arsenalSection += '<!-- Sun: soft borderless glow layers -->';
+            arsenalSection += '<circle cx="' + ACX + '" cy="' + AY + '" r="80" fill="#FF9800" filter="url(#a_corona-blur-wide)" opacity="0"><animate attributeName="r" values="70;95;70" dur="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.08;0.18;0.08" dur="6s" repeatCount="indefinite"/></circle>';
+            arsenalSection += '<circle cx="' + ACX + '" cy="' + AY + '" r="55" fill="#FFD54F" filter="url(#a_corona-blur)" opacity="0"><animate attributeName="r" values="48;65;48" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.15;0.3;0.15" dur="4s" repeatCount="indefinite"/></circle>';
+            arsenalSection += '<circle cx="' + ACX + '" cy="' + AY + '" r="35" fill="#FFD54F" filter="url(#a_sun-glow)" opacity="0"><animate attributeName="r" values="30;42;30" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/></circle>';
+            arsenalSection += '<circle cx="' + ACX + '" cy="' + AY + '" r="30" fill="#FFD54F" opacity="0"><animate attributeName="r" values="25;45;25" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.05;0.12;0.05" dur="5s" repeatCount="indefinite"/></circle>';
+            arsenalSection += '<circle cx="' + ACX + '" cy="' + AY + '" r="25" fill="#FF9800" opacity="0"><animate attributeName="r" values="20;38;20" dur="7s" begin="-2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.04;0.1;0.04" dur="7s" begin="-2s" repeatCount="indefinite"/></circle>';
+            arsenalSection += '<circle cx="' + ACX + '" cy="' + AY + '" r="28" fill="#FF69B4" opacity="0"><animate attributeName="r" values="22;42;22" dur="8s" begin="-4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.03;0.08;0.03" dur="8s" begin="-4s" repeatCount="indefinite"/></circle>';
+            arsenalSection += '<circle cx="' + ACX + '" cy="' + AY + '" r="16" fill="url(#a_sun-grad)" filter="url(#a_glow-core)" opacity="0.95"><animate attributeName="r" values="14;18;14" dur="3s" repeatCount="indefinite"/></circle>';
+            arsenalSection += '<circle cx="' + ACX + '" cy="' + AY + '" r="8" fill="#FFF8E1" opacity="0.5"><animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/></circle>';
+            arsenalSection += '<!-- Tech icons -->' + outerIcons + innerIcons + sparkles;
+            arsenalSection += '<!-- Label --><text x="' + ACX + '" y="390" text-anchor="middle" font-family="\'Courier New\', monospace" font-size="10" fill="#FF69B4" opacity="0.4" letter-spacing="6">TECH ARSENAL<animate attributeName="opacity" values="0.4;0.7;0.4" dur="4s" repeatCount="indefinite"/></text>';
 
             // ══════════════════════════════════════════════
-            // ── Section dimensions ──
+            // ── Section offsets ──
             // ══════════════════════════════════════════════
             const heroH = 260, arsenalH = 420, SEP = 15;
             const nonFork = repos.filter(r => !r.fork);
@@ -355,6 +356,23 @@ jobs:
             // ══════════════════════════════════════════════
             const profileSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${PW}" height="${totalH}" viewBox="0 0 ${PW} ${totalH}">
             <defs>
+            <filter id="h_glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="h_glow-strong"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <linearGradient id="h_aurora1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FF69B4" stop-opacity="0"/><stop offset="30%" stop-color="#FF69B4" stop-opacity="0.6"/><stop offset="70%" stop-color="#9B59B6" stop-opacity="0.6"/><stop offset="100%" stop-color="#9B59B6" stop-opacity="0"/></linearGradient>
+            <linearGradient id="h_aurora2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00D4FF" stop-opacity="0"/><stop offset="40%" stop-color="#00D4FF" stop-opacity="0.4"/><stop offset="60%" stop-color="#FF69B4" stop-opacity="0.4"/><stop offset="100%" stop-color="#FF69B4" stop-opacity="0"/></linearGradient>
+            <linearGradient id="h_text-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FF69B4"/><stop offset="50%" stop-color="#D4A5FF"/><stop offset="100%" stop-color="#00D4FF"/></linearGradient>
+            <radialGradient id="h_dot-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FF69B4" stop-opacity="0.8"/><stop offset="100%" stop-color="#FF69B4" stop-opacity="0"/></radialGradient>
+            <radialGradient id="h_orb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FF69B4" stop-opacity="0.15"/><stop offset="50%" stop-color="#9B59B6" stop-opacity="0.05"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+            <filter id="a_glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="a_glow-s"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="a_glow-core" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="a_sun-glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="20" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="a_corona-blur" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="25"/></filter>
+            <filter id="a_corona-blur-wide" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="40"/></filter>
+            <radialGradient id="a_bg-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FF69B4" stop-opacity="0.08"/><stop offset="60%" stop-color="#9B59B6" stop-opacity="0.03"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+            <radialGradient id="a_sun-grad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFF8E1"/><stop offset="30%" stop-color="#FFD54F"/><stop offset="60%" stop-color="#FF9800"/><stop offset="100%" stop-color="#FF69B4" stop-opacity="0"/></radialGradient>
+            <radialGradient id="a_sun-corona" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFD54F" stop-opacity="0.4"/><stop offset="50%" stop-color="#FF9800" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+            <linearGradient id="a_ring-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF69B4"/><stop offset="100%" stop-color="#9B59B6"/></linearGradient>
             <filter id="p_g1"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             <filter id="p_g"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             <filter id="p_gf"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -367,7 +385,7 @@ jobs:
             <rect width="${PW}" height="${totalH}" fill="#0a0a1a"/>
             ${gridLines}
             <!-- Arsenal (dynamic, full width) -->
-            ${arsenalSvg}
+            ${arsenalSection}
             <!-- Separator -->
             <line x1="30" y1="${arsenalH + SEP/2}" x2="${PW-30}" y2="${arsenalH + SEP/2}" stroke="#FF69B4" stroke-width="0.5" opacity="0.15"/>
             <!-- Profile Card -->
@@ -384,7 +402,7 @@ jobs:
             </svg>`;
 
             fs.writeFileSync('profile-card.svg', profileSvg);
-            console.log(`Generated profile-card.svg: ${commits} contributions, ${repoCount} repos, ${followers} followers, ${nonFork.length} projects`);
+            console.log(`Generated: ${commits} contributions, ${repoCount} repos, ${followers} followers, ${nonFork.length} projects`);
             console.log(`Arsenal: outer=[${outerLangs.map(l=>l[0]).join(', ')}], inner=[${innerLangs.map(l=>l[0]).join(', ')}]`);
         env:
           PAT: ${{ secrets.PAT }}
@@ -394,3 +412,4 @@ jobs:
           git add profile-card.svg
           git diff --cached --quiet || git commit -m "chore: update profile card"
           git push
+
