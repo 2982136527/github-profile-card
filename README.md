@@ -20,9 +20,11 @@ A dynamic, animated GitHub profile card that auto-updates with your stats, langu
 
 Create a new repository with the **same name as your GitHub username** (e.g., if your username is `octocat`, create `octocat/octocat`).
 
-### 2. Copy the workflow
+### 2. Copy the files
 
-Copy `.github/workflows/update-profile.yml` into your new repo.
+Copy these files into your new repo:
+- `.github/workflows/update-profile.yml`
+- `hero-banner.svg` (the header image)
 
 ### 3. (Optional) Add a Personal Access Token
 
