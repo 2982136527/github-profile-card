@@ -381,11 +381,12 @@ jobs:
             <linearGradient id="p_bar3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9B59B6"/><stop offset="100%" stop-color="#FF69B4"/></linearGradient>
             <linearGradient id="p_sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00ff88"/><stop offset="50%" stop-color="#FF69B4"/><stop offset="100%" stop-color="#00D4FF"/></linearGradient>
             <radialGradient id="p_orb1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FF69B4" stop-opacity="0.08"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+            <clipPath id="heroClip"><rect x="0" y="0" width="900" height="${heroH}"/></clipPath>
             </defs>
             <rect width="${PW}" height="${totalH}" fill="#0a0a1a"/>
             ${gridLines}
             <!-- Hero Banner (900px centered in 960px) -->
-            <g transform="translate(${(PW-900)/2},0)">
+            <g transform="translate(${(PW-900)/2},0)" clip-path="url(#heroClip)">
             ${heroInner}
             </g>
             <!-- Separator -->
