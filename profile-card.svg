@@ -226,10 +226,10 @@
 <text x="930" y="32" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#D4A5FF" opacity="0.3">12 repos</text>
 <rect x="32" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(36,48)" clip-path="url(#cardTextClip)">
-<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mlog</text>
+<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mpic-images</text>
 <text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-06-27</text>
-<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">双语博客系统，支持 AI 写作增强与前台管理...</text>
-<circle cx="4" cy="40" r="3" fill="#FF69B4" opacity="0.6"/><text x="12" y="44" font-family="sans-serif" font-size="9" fill="#FF69B4" opacity="0.5">TypeScript</text>
+<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">Mpic image storage</text>
+
 </g><rect x="248" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(252,48)" clip-path="url(#cardTextClip)">
 <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mpic</text>
@@ -244,16 +244,16 @@
 
 </g><rect x="680" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(684,48)" clip-path="url(#cardTextClip)">
-<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mpic-images</text>
-<text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-06-27</text>
-<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">Mpic image storage</text>
-
-</g><rect x="32" y="104" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
-<g transform="translate(36,106)" clip-path="url(#cardTextClip)">
 <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">github-profile-card</text>
 <text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-06-27</text>
 <text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">动态 GitHub 个人主页 SVG 卡片，...</text>
 
+</g><rect x="32" y="104" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
+<g transform="translate(36,106)" clip-path="url(#cardTextClip)">
+<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mlog</text>
+<text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-06-27</text>
+<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">双语博客系统，支持 AI 写作增强与前台管理...</text>
+<circle cx="4" cy="40" r="3" fill="#FF69B4" opacity="0.6"/><text x="12" y="44" font-family="sans-serif" font-size="9" fill="#FF69B4" opacity="0.5">TypeScript</text>
 </g><rect x="248" y="104" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(252,106)" clip-path="url(#cardTextClip)">
 <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">TmdbCacheX</text>
@@ -302,7 +302,7 @@
 <g>
 <rect x="40" y="314" width="270" height="85" rx="8" fill="white" opacity="0.03" stroke="#FF69B4" stroke-width="0.5" stroke-opacity="0.15"/>
 <text x="60" y="341" font-family="'Courier New', monospace" font-size="11" fill="#FF69B4" opacity="0.5" letter-spacing="3">CONTRIBUTIONS</text>
-<text x="60" y="377" font-family="'Courier New', monospace" font-size="42" font-weight="bold" fill="#FF69B4" filter="url(#p_g1)">495<animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/></text>
+<text x="60" y="377" font-family="'Courier New', monospace" font-size="42" font-weight="bold" fill="#FF69B4" filter="url(#p_g1)">662<animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/></text>
 <rect x="60" y="387" width="0" height="3" rx="1.5" fill="url(#p_bar1)"><animate attributeName="width" from="0" to="165" dur="1.5s" fill="freeze" begin="0.3s"/></rect>
 <rect x="60" y="387" width="165" height="3" rx="1.5" fill="url(#p_bar1)" opacity="0.1"/>
 </g>
@@ -324,16 +324,16 @@
 <text x="50" y="454" font-family="'Courier New', monospace" font-size="13" fill="#FF69B4" opacity="0.6">TypeScript</text>
 <rect x="155" y="444" width="0" height="10" rx="5" fill="url(#bar1)" opacity="0.8"><animate attributeName="width" from="0" to="492" dur="1.2s" fill="freeze" begin="0.8s"/></rect>
 <text x="657" y="454" font-family="'Courier New', monospace" font-size="13" fill="#FF69B4" opacity="0.4">82%</text><text x="50" y="484" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.6">JavaScript</text>
-<rect x="155" y="474" width="0" height="10" rx="5" fill="url(#bar2)" opacity="0.8"><animate attributeName="width" from="0" to="48" dur="1.2s" fill="freeze" begin="1.0s"/></rect>
-<text x="213" y="484" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.4">8%</text><text x="50" y="514" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.6">HTML</text>
-<rect x="155" y="504" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="48" dur="1.2s" fill="freeze" begin="1.2s"/></rect>
-<text x="213" y="514" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.4">8%</text><text x="50" y="544" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.6">Python</text>
-<rect x="155" y="534" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="12" dur="1.2s" fill="freeze" begin="1.4s"/></rect>
-<text x="177" y="544" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.4">2%</text>
+<rect x="155" y="474" width="0" height="10" rx="5" fill="url(#bar2)" opacity="0.8"><animate attributeName="width" from="0" to="42" dur="1.2s" fill="freeze" begin="1.0s"/></rect>
+<text x="207" y="484" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.4">7%</text><text x="50" y="514" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.6">HTML</text>
+<rect x="155" y="504" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="42" dur="1.2s" fill="freeze" begin="1.2s"/></rect>
+<text x="207" y="514" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.4">7%</text><text x="50" y="544" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.6">Python</text>
+<rect x="155" y="534" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="24" dur="1.2s" fill="freeze" begin="1.4s"/></rect>
+<text x="189" y="544" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.4">4%</text>
 <g transform="translate(870, 479)">
 <circle cx="0" cy="0" r="36" fill="none" stroke="#FF69B4" stroke-width="2" opacity="0.1" stroke-dasharray="226.2" stroke-dashoffset="0"/>
-<circle cx="0" cy="0" r="36" fill="none" stroke="#FF69B4" stroke-width="2" opacity="0.7" stroke-dasharray="226.2" stroke-dashoffset="226.2" stroke-linecap="round" transform="rotate(-90)"><animate attributeName="stroke-dashoffset" from="226.2" to="111.2" dur="1.5s" fill="freeze" begin="0.5s"/></circle>
-<text x="0" y="6" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#FF69B4">41%<animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/></text>
+<circle cx="0" cy="0" r="36" fill="none" stroke="#FF69B4" stroke-width="2" opacity="0.7" stroke-dasharray="226.2" stroke-dashoffset="226.2" stroke-linecap="round" transform="rotate(-90)"><animate attributeName="stroke-dashoffset" from="226.2" to="84.8" dur="1.5s" fill="freeze" begin="0.5s"/></circle>
+<text x="0" y="6" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#FF69B4">55%<animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/></text>
 <text x="0" y="56" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#FF69B4" opacity="0.4">STREAK</text>
 </g>
 <line x1="30" y1="579" x2="930" y2="579" stroke="#FF69B4" stroke-width="0.5" opacity="0.15"/>
