@@ -208,9 +208,9 @@
 <!-- Arsenal (dynamic, full width) -->
 <g transform="translate(0,275)">
 <!-- Grid --><g opacity="0.03" stroke="#FF69B4" stroke-width="0.5"><line x1="0" y1="0" x2="0" y2="420"/><line x1="80" y1="0" x2="80" y2="420"/><line x1="160" y1="0" x2="160" y2="420"/><line x1="240" y1="0" x2="240" y2="420"/><line x1="320" y1="0" x2="320" y2="420"/><line x1="400" y1="0" x2="400" y2="420"/><line x1="480" y1="0" x2="480" y2="420"/><line x1="560" y1="0" x2="560" y2="420"/><line x1="640" y1="0" x2="640" y2="420"/><line x1="720" y1="0" x2="720" y2="420"/><line x1="800" y1="0" x2="800" y2="420"/><line x1="880" y1="0" x2="880" y2="420"/><line x1="960" y1="0" x2="960" y2="420"/><line x1="0" y1="0" x2="960" y2="0"/><line x1="0" y1="60" x2="960" y2="60"/><line x1="0" y1="120" x2="960" y2="120"/><line x1="0" y1="180" x2="960" y2="180"/><line x1="0" y1="240" x2="960" y2="240"/><line x1="0" y1="300" x2="960" y2="300"/><line x1="0" y1="360" x2="960" y2="360"/><line x1="0" y1="420" x2="960" y2="420"/></g><!-- Elliptical orbits --><ellipse cx="480" cy="200" rx="380" ry="80" fill="none" stroke="#FF69B4" stroke-width="0.5" opacity="0.12"/><ellipse cx="480" cy="200" rx="240" ry="50" fill="none" stroke="#D4A5FF" stroke-width="0.4" opacity="0.08" stroke-dasharray="4 8"/><!-- Sun: soft borderless glow layers --><circle cx="480" cy="200" r="80" fill="#FF9800" filter="url(#a_corona-blur-wide)" opacity="0"><animate attributeName="r" values="70;95;70" dur="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.08;0.18;0.08" dur="6s" repeatCount="indefinite"/></circle><circle cx="480" cy="200" r="55" fill="#FFD54F" filter="url(#a_corona-blur)" opacity="0"><animate attributeName="r" values="48;65;48" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.15;0.3;0.15" dur="4s" repeatCount="indefinite"/></circle><circle cx="480" cy="200" r="35" fill="#FFD54F" filter="url(#a_sun-glow)" opacity="0"><animate attributeName="r" values="30;42;30" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/></circle><circle cx="480" cy="200" r="30" fill="#FFD54F" opacity="0"><animate attributeName="r" values="25;45;25" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.05;0.12;0.05" dur="5s" repeatCount="indefinite"/></circle><circle cx="480" cy="200" r="25" fill="#FF9800" opacity="0"><animate attributeName="r" values="20;38;20" dur="7s" begin="-2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.04;0.1;0.04" dur="7s" begin="-2s" repeatCount="indefinite"/></circle><circle cx="480" cy="200" r="28" fill="#FF69B4" opacity="0"><animate attributeName="r" values="22;42;22" dur="8s" begin="-4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.03;0.08;0.03" dur="8s" begin="-4s" repeatCount="indefinite"/></circle><circle cx="480" cy="200" r="16" fill="url(#a_sun-grad)" filter="url(#a_glow-core)" opacity="0.95"><animate attributeName="r" values="14;18;14" dur="3s" repeatCount="indefinite"/></circle><circle cx="480" cy="200" r="8" fill="#FFF8E1" opacity="0.5"><animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/></circle><!-- Tech icons --><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="0s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#3178C6" opacity="0.9"/>
-    <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="sans-serif">TS</text><animate attributeName="opacity" values="0.9;1;0.9" dur="3.0s" repeatCount="indefinite"/></g><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="-9.286s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#E34F26" opacity="0.9"/>
-    <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="sans-serif">H5</text><animate attributeName="opacity" values="0.9;1;0.9" dur="3.3s" repeatCount="indefinite"/></g><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="-18.571s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#F7DF1E" opacity="0.9"/>
-    <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="bold" fill="#000" font-family="sans-serif">JS</text><animate attributeName="opacity" values="0.9;1;0.9" dur="3.6s" repeatCount="indefinite"/></g><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="-27.857s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#3776AB" opacity="0.9"/>
+    <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="sans-serif">TS</text><animate attributeName="opacity" values="0.9;1;0.9" dur="3.0s" repeatCount="indefinite"/></g><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="-9.286s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#F7DF1E" opacity="0.9"/>
+    <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="bold" fill="#000" font-family="sans-serif">JS</text><animate attributeName="opacity" values="0.9;1;0.9" dur="3.3s" repeatCount="indefinite"/></g><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="-18.571s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#E34F26" opacity="0.9"/>
+    <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="sans-serif">H5</text><animate attributeName="opacity" values="0.9;1;0.9" dur="3.6s" repeatCount="indefinite"/></g><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="-27.857s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#3776AB" opacity="0.9"/>
     <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFD43B" font-family="sans-serif">Py</text><animate attributeName="opacity" values="0.9;1;0.9" dur="3.9s" repeatCount="indefinite"/></g><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="-37.143s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#1572B6" opacity="0.9"/>
     <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="sans-serif">Css</text><animate attributeName="opacity" values="0.9;1;0.9" dur="4.2s" repeatCount="indefinite"/></g><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="-46.429s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#2496ED" opacity="0.9"/>
     <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="sans-serif">Dk</text><animate attributeName="opacity" values="0.9;1;0.9" dur="4.5s" repeatCount="indefinite"/></g><g filter="url(#a_glow-s)"><animateMotion dur="65s" repeatCount="indefinite" begin="-55.714s" rotate="auto" path="M860,200 A380,80 0 1,1 100,200 A380,80 0 1,1 860,200"/><rect x="-13" y="-13" width="26" height="26" rx="2.99" fill="#89e051" opacity="0.9"/>
@@ -226,10 +226,10 @@
 <text x="930" y="32" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#D4A5FF" opacity="0.3">12 repos</text>
 <rect x="32" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(36,48)" clip-path="url(#cardTextClip)">
-<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mpic-images</text>
+<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mlog</text>
 <text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-06-27</text>
-<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">Mpic image storage</text>
-
+<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">双语博客系统，支持 AI 写作增强与前台管理...</text>
+<circle cx="4" cy="40" r="3" fill="#FF69B4" opacity="0.6"/><text x="12" y="44" font-family="sans-serif" font-size="9" fill="#FF69B4" opacity="0.5">TypeScript</text>
 </g><rect x="248" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(252,48)" clip-path="url(#cardTextClip)">
 <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mpic</text>
@@ -244,16 +244,16 @@
 
 </g><rect x="680" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(684,48)" clip-path="url(#cardTextClip)">
+<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mpic-images</text>
+<text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-06-27</text>
+<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">Mpic image storage</text>
+
+</g><rect x="32" y="104" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
+<g transform="translate(36,106)" clip-path="url(#cardTextClip)">
 <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">github-profile-card</text>
 <text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-06-27</text>
 <text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">动态 GitHub 个人主页 SVG 卡片，...</text>
 
-</g><rect x="32" y="104" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
-<g transform="translate(36,106)" clip-path="url(#cardTextClip)">
-<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mlog</text>
-<text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-06-27</text>
-<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">双语博客系统，支持 AI 写作增强与前台管理...</text>
-<circle cx="4" cy="40" r="3" fill="#FF69B4" opacity="0.6"/><text x="12" y="44" font-family="sans-serif" font-size="9" fill="#FF69B4" opacity="0.5">TypeScript</text>
 </g><rect x="248" y="104" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(252,106)" clip-path="url(#cardTextClip)">
 <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">TmdbCacheX</text>
@@ -302,7 +302,7 @@
 <g>
 <rect x="40" y="314" width="270" height="85" rx="8" fill="white" opacity="0.03" stroke="#FF69B4" stroke-width="0.5" stroke-opacity="0.15"/>
 <text x="60" y="341" font-family="'Courier New', monospace" font-size="11" fill="#FF69B4" opacity="0.5" letter-spacing="3">CONTRIBUTIONS</text>
-<text x="60" y="377" font-family="'Courier New', monospace" font-size="42" font-weight="bold" fill="#FF69B4" filter="url(#p_g1)">474<animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/></text>
+<text x="60" y="377" font-family="'Courier New', monospace" font-size="42" font-weight="bold" fill="#FF69B4" filter="url(#p_g1)">495<animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/></text>
 <rect x="60" y="387" width="0" height="3" rx="1.5" fill="url(#p_bar1)"><animate attributeName="width" from="0" to="165" dur="1.5s" fill="freeze" begin="0.3s"/></rect>
 <rect x="60" y="387" width="165" height="3" rx="1.5" fill="url(#p_bar1)" opacity="0.1"/>
 </g>
@@ -322,18 +322,18 @@
 </g>
 <line x1="50" y1="419" x2="910" y2="419" stroke="#FF69B4" stroke-width="0.5" opacity="0.1"/>
 <text x="50" y="454" font-family="'Courier New', monospace" font-size="13" fill="#FF69B4" opacity="0.6">TypeScript</text>
-<rect x="155" y="444" width="0" height="10" rx="5" fill="url(#bar1)" opacity="0.8"><animate attributeName="width" from="0" to="486" dur="1.2s" fill="freeze" begin="0.8s"/></rect>
-<text x="651" y="454" font-family="'Courier New', monospace" font-size="13" fill="#FF69B4" opacity="0.4">81%</text><text x="50" y="484" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.6">HTML</text>
+<rect x="155" y="444" width="0" height="10" rx="5" fill="url(#bar1)" opacity="0.8"><animate attributeName="width" from="0" to="492" dur="1.2s" fill="freeze" begin="0.8s"/></rect>
+<text x="657" y="454" font-family="'Courier New', monospace" font-size="13" fill="#FF69B4" opacity="0.4">82%</text><text x="50" y="484" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.6">JavaScript</text>
 <rect x="155" y="474" width="0" height="10" rx="5" fill="url(#bar2)" opacity="0.8"><animate attributeName="width" from="0" to="48" dur="1.2s" fill="freeze" begin="1.0s"/></rect>
-<text x="213" y="484" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.4">8%</text><text x="50" y="514" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.6">JavaScript</text>
+<text x="213" y="484" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.4">8%</text><text x="50" y="514" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.6">HTML</text>
 <rect x="155" y="504" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="48" dur="1.2s" fill="freeze" begin="1.2s"/></rect>
 <text x="213" y="514" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.4">8%</text><text x="50" y="544" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.6">Python</text>
-<rect x="155" y="534" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="18" dur="1.2s" fill="freeze" begin="1.4s"/></rect>
-<text x="183" y="544" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.4">3%</text>
+<rect x="155" y="534" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="12" dur="1.2s" fill="freeze" begin="1.4s"/></rect>
+<text x="177" y="544" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.4">2%</text>
 <g transform="translate(870, 479)">
 <circle cx="0" cy="0" r="36" fill="none" stroke="#FF69B4" stroke-width="2" opacity="0.1" stroke-dasharray="226.2" stroke-dashoffset="0"/>
-<circle cx="0" cy="0" r="36" fill="none" stroke="#FF69B4" stroke-width="2" opacity="0.7" stroke-dasharray="226.2" stroke-dashoffset="226.2" stroke-linecap="round" transform="rotate(-90)"><animate attributeName="stroke-dashoffset" from="226.2" to="115.0" dur="1.5s" fill="freeze" begin="0.5s"/></circle>
-<text x="0" y="6" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#FF69B4">39%<animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/></text>
+<circle cx="0" cy="0" r="36" fill="none" stroke="#FF69B4" stroke-width="2" opacity="0.7" stroke-dasharray="226.2" stroke-dashoffset="226.2" stroke-linecap="round" transform="rotate(-90)"><animate attributeName="stroke-dashoffset" from="226.2" to="111.2" dur="1.5s" fill="freeze" begin="0.5s"/></circle>
+<text x="0" y="6" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#FF69B4">41%<animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/></text>
 <text x="0" y="56" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#FF69B4" opacity="0.4">STREAK</text>
 </g>
 <line x1="30" y1="579" x2="930" y2="579" stroke="#FF69B4" stroke-width="0.5" opacity="0.15"/>
