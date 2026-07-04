@@ -232,21 +232,21 @@
 
 </g><rect x="248" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(252,48)" clip-path="url(#cardTextClip)">
-<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">github-profile-card</text>
-<text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-07-04</text>
-<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">动态 GitHub 个人主页 SVG 卡片，...</text>
-
-</g><rect x="464" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
-<g transform="translate(468,48)" clip-path="url(#cardTextClip)">
 <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mpic-images</text>
 <text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-07-04</text>
 <text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">Mpic image storage</text>
 
-</g><rect x="680" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
-<g transform="translate(684,48)" clip-path="url(#cardTextClip)">
+</g><rect x="464" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
+<g transform="translate(468,48)" clip-path="url(#cardTextClip)">
 <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">mpic-images-2</text>
 <text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-07-04</text>
 <text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">mpic image storage sha...</text>
+
+</g><rect x="680" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
+<g transform="translate(684,48)" clip-path="url(#cardTextClip)">
+<text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">github-profile-card</text>
+<text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-07-04</text>
+<text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">动态 GitHub 个人主页 SVG 卡片，...</text>
 
 </g><rect x="32" y="104" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(36,106)" clip-path="url(#cardTextClip)">
@@ -314,7 +314,7 @@
 <g>
 <rect x="40" y="372" width="270" height="85" rx="8" fill="white" opacity="0.03" stroke="#FF69B4" stroke-width="0.5" stroke-opacity="0.15"/>
 <text x="60" y="399" font-family="'Courier New', monospace" font-size="11" fill="#FF69B4" opacity="0.5" letter-spacing="3">CONTRIBUTIONS</text>
-<text x="60" y="435" font-family="'Courier New', monospace" font-size="42" font-weight="bold" fill="#FF69B4" filter="url(#p_g1)">57,577<animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/></text>
+<text x="60" y="435" font-family="'Courier New', monospace" font-size="42" font-weight="bold" fill="#FF69B4" filter="url(#p_g1)">58,023<animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/></text>
 <rect x="60" y="445" width="0" height="3" rx="1.5" fill="url(#p_bar1)"><animate attributeName="width" from="0" to="165" dur="1.5s" fill="freeze" begin="0.3s"/></rect>
 <rect x="60" y="445" width="165" height="3" rx="1.5" fill="url(#p_bar1)" opacity="0.1"/>
 </g>
