@@ -242,7 +242,7 @@
 </g><rect x="464" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
 <g transform="translate(468,48)" clip-path="url(#cardTextClip)">
 <text x="4" y="16" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#FF69B4" opacity="0.85">github-profile-card</text>
-<text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-11-23</text>
+<text x="186" y="16" text-anchor="end" font-family="sans-serif" font-size="9" fill="#8892b0" opacity="0.35">2026-11-24</text>
 <text x="4" y="32" font-family="sans-serif" font-size="10" fill="#8892b0" opacity="0.5">动态 GitHub 个人主页 SVG 卡片，...</text>
 
 </g><rect x="680" y="46" width="200" height="52" rx="6" fill="white" opacity="0.02" stroke="#FF69B4" stroke-width="0.3" stroke-opacity="0.08"/>
@@ -427,14 +427,14 @@
 </g>
 <line x1="50" y1="709" x2="910" y2="709" stroke="#FF69B4" stroke-width="0.5" opacity="0.1"/>
 <text x="50" y="744" font-family="'Courier New', monospace" font-size="13" fill="#FF69B4" opacity="0.6">TypeScript</text>
-<rect x="155" y="734" width="0" height="10" rx="5" fill="url(#bar1)" opacity="0.8"><animate attributeName="width" from="0" to="246" dur="1.2s" fill="freeze" begin="0.8s"/></rect>
-<text x="411" y="744" font-family="'Courier New', monospace" font-size="13" fill="#FF69B4" opacity="0.4">41%</text><text x="50" y="774" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.6">Python</text>
-<rect x="155" y="764" width="0" height="10" rx="5" fill="url(#bar2)" opacity="0.8"><animate attributeName="width" from="0" to="204" dur="1.2s" fill="freeze" begin="1.0s"/></rect>
-<text x="369" y="774" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.4">34%</text><text x="50" y="804" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.6">Kotlin</text>
-<rect x="155" y="794" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="90" dur="1.2s" fill="freeze" begin="1.2s"/></rect>
-<text x="255" y="804" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.4">15%</text><text x="50" y="834" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.6">JavaScript</text>
-<rect x="155" y="824" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="60" dur="1.2s" fill="freeze" begin="1.4s"/></rect>
-<text x="225" y="834" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.4">10%</text>
+<rect x="155" y="734" width="0" height="10" rx="5" fill="url(#bar1)" opacity="0.8"><animate attributeName="width" from="0" to="258" dur="1.2s" fill="freeze" begin="0.8s"/></rect>
+<text x="423" y="744" font-family="'Courier New', monospace" font-size="13" fill="#FF69B4" opacity="0.4">43%</text><text x="50" y="774" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.6">Python</text>
+<rect x="155" y="764" width="0" height="10" rx="5" fill="url(#bar2)" opacity="0.8"><animate attributeName="width" from="0" to="180" dur="1.2s" fill="freeze" begin="1.0s"/></rect>
+<text x="345" y="774" font-family="'Courier New', monospace" font-size="13" fill="#D4A5FF" opacity="0.4">30%</text><text x="50" y="804" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.6">Kotlin</text>
+<rect x="155" y="794" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="96" dur="1.2s" fill="freeze" begin="1.2s"/></rect>
+<text x="261" y="804" font-family="'Courier New', monospace" font-size="13" fill="#00D4FF" opacity="0.4">16%</text><text x="50" y="834" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.6">JavaScript</text>
+<rect x="155" y="824" width="0" height="10" rx="5" fill="url(#bar3)" opacity="0.8"><animate attributeName="width" from="0" to="66" dur="1.2s" fill="freeze" begin="1.4s"/></rect>
+<text x="231" y="834" font-family="'Courier New', monospace" font-size="13" fill="#9B59B6" opacity="0.4">11%</text>
 <g transform="translate(870, 769)">
 <circle cx="0" cy="0" r="36" fill="none" stroke="#FF69B4" stroke-width="2" opacity="0.1" stroke-dasharray="226.2" stroke-dashoffset="0"/>
 <circle cx="0" cy="0" r="36" fill="none" stroke="#FF69B4" stroke-width="2" opacity="0.7" stroke-dasharray="226.2" stroke-dashoffset="226.2" stroke-linecap="round" transform="rotate(-90)"><animate attributeName="stroke-dashoffset" from="226.2" to="0.0" dur="1.5s" fill="freeze" begin="0.5s"/></circle>
